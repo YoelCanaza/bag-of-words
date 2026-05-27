@@ -87,10 +87,12 @@ runPipeline textFile mLabels = do
 
     -- -----------------------------------------------------------------------
     -- FASE 3b — MAP + FOLD: Análisis de Sentimiento
-    -- Para cada documento: foldl acumula la polaridad → classify → etiqueta.
-    -- Resultado: una etiqueta por reseña.
+    -- Usamos los tokens CRUDOS (tokenized, no cleaned) para que los negadores
+    -- cortos como "no", "ni", "sin" (filtrados del BoW por longitud < 4)
+    -- sí participen en el cálculo de polaridad.
+    -- Para cada documento: foldl acumula polaridad con manejo de negación.
     -- -----------------------------------------------------------------------
-    let sentLabels = map classifyReview cleaned
+    let sentLabels = map classifyReview tokenized
 
     -- -----------------------------------------------------------------------
     -- SALIDAS
