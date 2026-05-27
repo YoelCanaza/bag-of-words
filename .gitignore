@@ -1,0 +1,16 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Haskell / Cabal
+dist-newstyle/
+.ghc.environment.*
+
+# IDEs
+.vscode/
+.idea/
+
+# Datasets y archivos grandes
+data/
